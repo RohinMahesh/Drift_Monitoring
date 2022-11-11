@@ -2,9 +2,11 @@ import base64
 import boto3
 from datetime import datetime, timedelta
 from evidently.pipeline.column_mapping import ColumnMapping
+from evidently.metrics import DataDriftTable, DatasetDriftMetric
 from evidently.model_profile import Profile
 from evidently.model_profile.sections import DataDriftProfileSection
 from evidently.options import DataDriftOptions
+from evidently.report import Report
 from io import StringIO
 import json
 import numpy as np
@@ -68,6 +70,24 @@ def calculate_drift(
 
     # Calculate drift report
     drift_profile.calculate(reference, comparison, column_mapping=columnMapping)
+
+    # Write index.html file to S3 bucket for static webpage
+    drift_report_html = Report(
+        metrics=[
+            DatasetDriftMetric(threshold=0.15, options=opt),
+            DataDriftTable(options=opt),
+        ]
+    )
+    drift_report_html.run(
+        reference_data=reference, current_data=comparison, column_mapping=columnMapping
+    )
+
+    s3_client = boto3.client("s3")
+    s3_client.put_object(
+        bucket="Bucket",
+        key="index.html",
+        Body=drift_report_html.save_html("index.html"),
+    )
     return drift_profile
 
 
