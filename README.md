@@ -26,11 +26,11 @@ In this project, we focus on monitoring covariate shifts in our input feature sp
 
 This monitoring services uses the following AWS components:
 
-CodeBuild: scheduler that triggers monitoring serving on a weekly cadence
-ECR: contains Docker image of monitoring service
-Lambda: serverless monitoring service that calculates drift, writes status to SNS and publishes HTML files for webpage
-S3: hosts the static webpage for Evidently AI drift status
-SNS: contains message of drift status that is emailed to client
+- CodeBuild: scheduler that triggers monitoring serving on a weekly cadence
+- ECR: contains Docker image of monitoring service
+- Lambda: serverless monitoring service that calculates drift, writes status to SNS and publishes HTML files for webpage
+- S3: hosts the static webpage for Evidently AI drift status
+- SNS: contains message of drift status that is emailed to client
 
 ## References
 
