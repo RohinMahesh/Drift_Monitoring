@@ -34,9 +34,9 @@ This monitoring services uses the following AWS components:
 
 ## References
 
-Halford, Max. River, https://riverml.xyz/0.14.0/., 2022
+Halford, Max. River, https://riverml.xyz/0.14.0/, 2022
 
 Huyen, Chip. Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications. O'Reilly Media, Inc., 2022. 
 
-Vowpal Wabbit, https://riverml.xyz/0.14.0/., 2022
+Vowpal Wabbit, https://vowpalwabbit.org, 2022
 
