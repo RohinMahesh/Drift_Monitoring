@@ -32,7 +32,7 @@ turn into a website by enabling static hosting
 Lambda
 
 - The drift detection is executed using Lambda, which is a serverless function
-- The Lambda function is containerized using Docker, and the respective Docker image is registered in Elastic Container Registry (ECR). 
+- The Lambda function is containerized using Docker, and the respective Docker image is registered in (ECR). 
 - Once the Container image is selected, under Trigger configuration:
     1. Select EventBridge (CloudWatch Events). This will be used to schedule the execution via Cron
     2. If you do not have an existing rule, create a new rule, and schedule the following expression:
@@ -59,7 +59,8 @@ docker run -it --rm \
 
 aws ecr create-repository –repository-name drift_monitoring
 
-- Push this Docker image to the repositoryUri provided when creating the ECR repository and create a Lambda function via Container image using the REMOTE_IMAGE:
+- Push this Docker image to the repositoryUri provided when creating the ECR repository and create a Lambda function via 
+  Container image using the REMOTE_IMAGE:
 
 REMOTE_URI= “” 
 REMOTE_TAG=”v1”
