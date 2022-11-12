@@ -18,7 +18,7 @@ To ensure that your ML system is robust and serves accurate predictions to your 
 2. Distributional shifts in your target variable
 3. Distributional shifts in your model predictions
 
-While monitoring is a powerful method for covariate shifts, it is vital to have a thorough understanding over the reasons behind these shifts in order to drive down potential false positives.
+While monitoring is a powerful method for covariate shifts, it is vital to have a thorough understanding over the reasons behind these shifts in order to drive down potential false positives. Additionally, it is vital to enforce data quality standards upstream to ensure your ML system is learning from high-quality reliable data. Great Expectations is an excellent scalable framework for data quality validation. 
 
 In this project, we focus on monitoring covariate shifts in our input feature space by using the EvidentlyAI library.
 
@@ -35,6 +35,8 @@ This monitoring services uses the following AWS components:
 Configuration information can be located in the setup.md file.
 
 ## References
+
+Great Expectations, https://docs.greatexpectations.io/docs/, 2022
 
 Halford, Max. River, https://riverml.xyz/0.14.0/, 2022
 
