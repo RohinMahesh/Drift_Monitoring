@@ -206,11 +206,7 @@ def get_drift_data(bucket_name, file_key, sql_query, beginning, mid):
             Data used for reference
     """
     # Define boto3 client
-    s3_session = boto3.Session(
-        aws_access_key_id="XXXXXXXXXX",
-        aws_secret_access_key="XXXXXXXXXXX",
-    )
-    s3_client = s3_session.resource("s3")
+    s3_client = boto3.client("s3")
 
     # Query data
     obj = s3_client.select_object_content(
