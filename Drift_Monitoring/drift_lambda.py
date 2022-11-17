@@ -56,6 +56,4 @@ def lambda_handler(event, context):
             MessageStructure="json",
         )
 
-    # Write index.html file to S3 bucket for static webpage
-
     return {"Status": "Drift report saved!"}
