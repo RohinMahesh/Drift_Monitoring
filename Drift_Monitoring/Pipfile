@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+boto3 = "==1.26.10"
+evidently = "==0.1.59.dev3"
+numpy = "==1.23.4"
+pandas = "==1.5.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
