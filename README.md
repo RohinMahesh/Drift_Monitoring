@@ -24,8 +24,6 @@ In this project, we focus on monitoring covariate shifts in our input feature sp
 
 ## Overview
 
-![Screenshot](architecture_drift_monitoring.png)
-
 This monitoring services uses the following AWS components:
 
 - EventBridge (CloudWatch Events): triggers monitoring service on a weekly cadence
@@ -35,6 +33,8 @@ This monitoring services uses the following AWS components:
 - SNS: contains message of drift status that is emailed to client
 
 Configuration information can be located in the setup.md file.
+
+![Screenshot](architecture_drift_monitoring.png)
 
 ## References
 
