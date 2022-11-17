@@ -82,12 +82,19 @@ def calculate_drift(
         reference_data=reference, current_data=comparison, column_mapping=columnMapping
     )
 
-    s3_client = boto3.client("s3")
-    s3_client.put_object(
-        bucket="Bucket",
-        key="index.html",
-        Body=drift_report_html.save_html("index.html"),
+    # Configure S3
+    s3_session = boto3.Session(
+        aws_access_key_id="XXXXXXXXXX",
+        aws_secret_access_key="XXXXXXXXXXX",
     )
+    s3_client = s3_session.resource("s3")
+
+    # Store locally to tmp directory
+    drift_report_html.save_html("/tmp/index.html")
+
+    # Store in S3
+    s3_client.Bucket("driftdetection").upload_file("/tmp/index.html", "index.html")
+
     return drift_profile
 
 
