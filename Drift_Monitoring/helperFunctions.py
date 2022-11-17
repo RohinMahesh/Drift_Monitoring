@@ -83,11 +83,7 @@ def calculate_drift(
     )
 
     # Configure S3
-    s3_session = boto3.Session(
-        aws_access_key_id="XXXXXXXXXX",
-        aws_secret_access_key="XXXXXXXXXXX",
-    )
-    s3_client = s3_session.resource("s3")
+    s3_client = boto3.client("s3")
 
     # Store locally to tmp directory
     drift_report_html.save_html("/tmp/index.html")
@@ -209,10 +205,14 @@ def get_drift_data(bucket_name, file_key, sql_query, beginning, mid):
         reference_data (Pandas DataFrame):
             Data used for reference
     """
-    # Define Boto3 Client
-    s3_client = boto3.client("s3")
+    # Define boto3 client
+    s3_session = boto3.Session(
+        aws_access_key_id="XXXXXXXXXX",
+        aws_secret_access_key="XXXXXXXXXXX",
+    )
+    s3_client = s3_session.resource("s3")
 
-    # Query Data
+    # Query data
     obj = s3_client.select_object_content(
         Bucket=bucket_name,
         Key=file_key,

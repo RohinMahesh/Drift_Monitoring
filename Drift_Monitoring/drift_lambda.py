@@ -49,8 +49,8 @@ def lambda_handler(event, context):
 
     # If there is any drift, send SNS notification
     if drift_report["any_drift"]:
-        client = boto3.client("sns")
-        response = client.publish(
+        sns_client = boto3.client("sns")
+        response = sns_client.publish(
             TargetArn="<ARN of the SNS topic>",
             Message=json.dumps({"default": drift_report}),
             MessageStructure="json",
