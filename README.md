@@ -24,7 +24,7 @@ In this project, we focus on monitoring covariate shifts in our input feature sp
 
 ## Overview
 
-![Screenshot](architecture_drift_monitoring.png)
+![Screenshot](architecture_drift_monitoring.png=250x250)
 
 This monitoring services uses the following AWS components:
 
