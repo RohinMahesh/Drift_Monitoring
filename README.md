@@ -32,9 +32,9 @@ This monitoring services uses the following AWS components:
 - S3: hosts the static webpage for Evidently AI drift status
 - SNS: contains message of drift status that is emailed to client
 
-Configuration information can be located in the setup.md file.
+Configuration information can be located in the setup.md file inside docs the folder.
 
-![Screenshot](architecture_drift_monitoring.png)
+![Screenshot](docs/architecture_drift_monitoring.png)
 
 ## References
 
