@@ -2,7 +2,7 @@
 
 ## Motiviation
 
-One of the most common challenges faced by Data Science teams building production ML systems is addressing data drift. This is because ML systems fail silently and can go undetected until something goes terribly wrong in production. Data drift can be further broken down into the following categories (Huyen, 2022):
+One of the common challenges faced by Data Science teams building production ML systems is addressing data drift. This is because ML systems fail silently and can go undetected until something goes terribly wrong in production. Data drift can be further broken down into the following categories (Huyen, 2022):
 
 1. Covariate shift: the distribution of the input changes, but the conditional probability of an output given an input remains the same (P(X) changes but P(Y|X) remains the same).
 2. Label shift: when the output distribution changes, but, for a given output, the input distribution stays the same (P(Y) changes but P(X|Y) remains the same).
@@ -12,13 +12,13 @@ Data drift affects all batch-based ML systems, causing your ML models to go "sta
 
 While most production ML systems have performance evaluation components to trigger model retraining, by comparing historical predictions with the true labels, often this may not be sufficient to detect potential problems with your ML system. 
 
-To ensure that your ML system is robust and serves accurate predictions to your end users, it is imperative to implement drift monitoring services in addition to your performance evaluation component to preemptively alert the Data Science teams when there are potential issues with your ML system. The following are useful examples of attributes to monitor:
+To ensure that your ML system is robust and serves accurate predictions to your end users, it is imperative to implement drift monitoring services in addition to your performance evaluation component to preemptively alert Data Science teams when there are potential issues with your ML system. The following are useful examples of attributes to monitor:
 
 1. Distributional shifts in your features
 2. Distributional shifts in your target variable
 3. Distributional shifts in your model predictions
 
-While monitoring is a powerful method for covariate shifts, it is vital to have a thorough understanding over the reasons behind these shifts in order to drive down potential false positives. Additionally, it is vital to enforce data quality standards upstream to ensure your ML system is learning from high-quality reliable data. Great Expectations is an excellent scalable framework for data quality validation. 
+While monitoring is a powerful method for covariate shifts, it is vital to have a thorough understanding for the reasons behind these shifts in order to reduce potential false positives. Additionally, it is equally important to enforce data quality standards upstream to ensure your ML system is learning from high-quality reliable data. Great Expectations is an excellent scalable framework for data quality validation. 
 
 In this project, we focus on monitoring covariate shifts in our input feature space by using the EvidentlyAI library.
 
