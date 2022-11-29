@@ -4,11 +4,11 @@
 - The object (index.html file from Evidently AI) will be served via the S3 bucket, and this object will then
 turn into a website by enabling static hosting
 - Once you have a dedicated S3 bucket, the following steps are performed:
-    1. Under Properties, Static website hosting is enabled
-        1.1 Under "Index document", index.html is selected
-        1.2 Under "Error document", error.html is selected
-    2. Bucket policy is defined to correctly serve out traffic:
-        2.1 In your bucket under Permissions, the following is defined under Bucket policy:
+    - Under Properties, Static website hosting is enabled
+      Under "Index document", index.html is selected
+      Under "Error document", error.html is selected
+    - Bucket policy is defined to correctly serve out traffic:
+        In your bucket under Permissions, the following is defined under Bucket policy:
         ```bash
         {
             "Version":“2012-10-17”,
@@ -27,17 +27,18 @@ turn into a website by enabling static hosting
             ]
         }
         ```
-        2.2 A key point to note is that the bucket policy above will allow anyone to access the static
-            webpage. This is for development purposes and is not ideal for production use
-        2.3 In the bucket policy, modify Resource for your specific static webpage
+        A key point to note is that the bucket policy above will allow anyone to access the static
+        webpage. This is for development purposes and is not ideal for production use
+        
+        In the bucket policy, modify Resource for your specific static webpage
 
 # Lambda
 
 - The drift detection is executed using Lambda, which is a serverless function
 - The Lambda function is containerized using Docker, and the respective Docker image is registered in (ECR). 
 - Once the Container image is selected, under Trigger configuration:
-    1. Select EventBridge (CloudWatch Events). This will be used to schedule the execution via Cron
-    2. If you do not have an existing rule, create a new rule, and schedule the following expression:
+    Select EventBridge (CloudWatch Events). This will be used to schedule the execution via Cron
+    If you do not have an existing rule, create a new rule, and schedule the following expression:
        ```bash
        cron(30 9 * * MON)
        ```
@@ -85,11 +86,11 @@ docker push ${REMOTE_IMAGE}
 
 - In addition to the static webpage, it is critical to alert the Data Science team of the drift status
 - Create a topic and the subsequent subscription:
-    1. Set Protocol as "Email"
-    2. Set Endpoint as the Data Science team service email ID
+    Set Protocol as "Email"
+    Set Endpoint as the Data Science team service email ID
 - Under your drift_lambda.py script, inside lambda_handler:
-    1. Modify your SNS boto3 client using your AWS credentials
-        1.1 It is recommended to use a key vault service like AWS KMS to manage your keys
-    2. Modify TargetArn using your SNS topic
+    Modify your SNS boto3 client using your AWS credentials
+        It is recommended to use a key vault service like AWS KMS to manage your keys
+    Modify TargetArn using your SNS topic
 - In addition to the static webpage, a JSON representation of the individual covariate drift status
   will be emailed to the Data Science service account email
