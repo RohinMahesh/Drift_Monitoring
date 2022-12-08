@@ -24,7 +24,7 @@ In this project, we focus on monitoring covariate shifts in our input feature sp
 
 ## Overview
 
-This monitoring services uses the following AWS components:
+This monitoring service uses the following AWS components:
 
 - EventBridge (CloudWatch Events): triggers monitoring service on a weekly cadence
 - ECR: contains Docker image of monitoring service
